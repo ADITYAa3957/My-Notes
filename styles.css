@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: rgb(237, 237, 236);
+}
+.for-heading {
+  background-color: gold;
+  height: 13vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 6fr 12fr 96fr;
+  align-items: center;
+}
+.note-icon {
+  justify-self: end;
+  color: black;
+}
+.heading {
+  justify-self: center;
+  font-size: 1.6rem;
+}
+.for-btn {
+  width: 100vw;
+  display: flex;
+  justify-content: end;
+}
+.add-note::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: gold;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  position: absolute;
+  transition-property: all;
+  transition-duration: 0.3s;
+  z-index: -1;
+}
+.add-note:hover::before {
+  transform: translateX(0%);
+}
+.add-note:hover {
+  transform: scale(1.1) translateY(-2px);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0 black;
+}
+.add-note:active {
+  transform: translate(2px) scale(1);
+  box-shadow: 0.05rem 0.05rem 0.1rem 0 black;
+}
+.add-note:hover i {
+  transform: translateY(-2px) scale(1.1);
+}
+
+.delete-all:hover i {
+  transform: translateY(-2px) scale(1.1);
+}
+.delete-all::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  position: absolute;
+  transition-property: all;
+  transition-duration: 0.3s;
+  z-index: -1;
+}
+.delete-all:hover::before {
+  transform: translateX(0%);
+}
+.delete-all:hover {
+  transform: scale(1.1) translateY(-3px);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0 black;
+}
+.delete-all:active {
+  transform: translate(3px) scale(1);
+  box-shadow: 0.05rem 0.05rem 0.1rem 0 black;
+}
+.add-icon,
+.delete-icon {
+  color: black;
+}
+.add-note {
+  outline: none;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  justify-self: start;
+  background-color: transparent;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  overflow: hidden;
+  transition-property: all;
+  transition-duration: 0.3s;
+  color: black;
+  font-size: 1.1rem;
+}
+.add-note:hover i {
+  color: white;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5rem;
+  grid-row-gap: 4rem;
+  margin: 2rem;
+  justify-items: center;
+}
+.note {
+  overflow-y: scroll;/*so the textfield shown on scrolling*/
+  scroll-behavior: smooth;
+  display: inline-block;
+  height: 30vh;
+  width: 20vw;
+  background-color: white;
+  border: 1px solid black;
+}
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.3rem 0.2rem;
+  border-radius: 100%;
+  height: 2rem;
+  width: 2rem;
+  color: white;
+}
+.icon:hover {
+  box-shadow: 0.02rem 0.02rem 0.1rem 0 black, -0.02rem -0.02rem 0.1rem 0 black;
+}
+.icon:active {
+  box-shadow: none;
+}
+.delete-icon {
+  background-color: red;
+}
+.edit-icon {
+  background-color: chartreuse;
+}
+.controls {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.time-stamp {
+  margin: 0.3rem;
+  color: blue;
+}
+.input-field:focus {
+  outline: none;
+}
+/* logic for our note div 
+We will use the text area in the div.
+All the things like resizer,border etc will be removed.
+Height and width will be fixed via the row and col attribute of HTML.
+To add scroll bar to div of note in say y direction use overflow-y and set to scrollbar.So the extra
+text area shown on scrolling.
+*/
+.input-field {
+  display: block;
+  border: none;
+  color: black;
+  resize: none; /*removes resizer*/
+  overflow: hidden; /*removes scroll bar of our textarea*/
+  font-size: 1.2rem;
+  width: 100%;
+  caret-color: red;
+}
+.output-field {
+  display: block;
+}
+.content {
+  font-family: "Montserrat", sans-serif;
+}
+.hide {
+  display: none;
+}
+.containerClass {
+  display: flex;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-device-width: 768px) and (max-device-width: 1439px) { 
+  html{
+    font-size:12px;/*this font taken reference for rem*/
+  }
+  .for-heading {   
+    grid-template-columns: 10fr 14fr 96fr;
+  }
+  .heading{
+    font-size:1.5rem;
+  }
+  .container{
+    grid-template-columns:repeat(3,1fr);
+    
+  }
+  .note{
+    height:35vh;
+    width:25vw;
+  }
+}
+@media screen and (max-device-width: 767px) { 
+  html{
+    font-size:10px;
+  }
+  .for-heading {   
+    grid-template-columns: 17fr 30fr 96fr;
+  }
+  .heading{
+    font-size:1.3rem;
+  }
+  .container{
+    grid-template-columns:repeat(2,1fr);
+    grid-gap:1rem;
+  }
+  .note{
+    height:30vh;
+    width:43vw;
+  }
+}
